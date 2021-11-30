@@ -1,17 +1,35 @@
-import { Grid, Text } from "@chakra-ui/react";
-import Infos from "./Infos";
+import { Grid, Heading } from "@chakra-ui/react";
+import { useContinent } from "../../hooks/useContinet";
+import City from "./City";
 
-export default function Content({continent}:ContinentProps) {
+export default function Cities() {
+  const { continent } = useContinent();
   return (
-    <Grid templateColumns={["1fr","1fr","1fr 1fr", "1.2fr 1fr"]} gap={[5, 10, 16, 20]} my={["8", "20"]}>
-      <Text
-        fontSize={["lg", "xl", "xl", "2xl"]}
-        color="gray.700"
-        textAlign="justify"
+    <>
+      <Heading
+        fontWeight="500"
+        fontSize={["2xl","4xl"]}
+        mb="10"
       >
-      {continent.description}
-      </Text>
-      <Infos continent={continent}/>
-    </Grid>
+        Cidades +100
+      </Heading>
+      <Grid
+        templateColumns={["1fr","1fr 1fr", "repeat(3, 1fr)", "repeat(4, 1fr)"]}
+        gap={['20px','45px']}
+        alignItems="center"
+        justifyContent="center"
+        px={["30px", "0"]}
+      >
+        {continent.citiesMore100.map(city => (
+          <City
+            key={city.name}
+            name={city.name}
+            country={city.country}
+            flag={city.flag}
+            image={city.image}
+          />
+        ))}
+      </Grid>
+    </>
   )
-}
+ }
