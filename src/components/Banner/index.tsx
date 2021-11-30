@@ -1,6 +1,6 @@
 import { Flex, Heading, Image, Text, useBreakpointValue } from "@chakra-ui/react";
 
-export default function Banner() {
+export function Banner() {
   const padding = useBreakpointValue({ base: '4', xl: '0' });
   const widthAirplane = useBreakpointValue({ base: '300px', lg: '430px' });
 
